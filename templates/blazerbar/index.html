@@ -10,7 +10,7 @@
 	{% if teams %}
 		<ul>
 			{% for team in teams %}
-				<li><a href="{% url 'team_games' team.team_id %}">{{ team.full_name }}</a></li>
+				<li><a href="{% url 'get_games' team.team_id %}">{{ team.full_name }}</a></li>
 			{% endfor %}
 		</ul>
 	{% endif %}

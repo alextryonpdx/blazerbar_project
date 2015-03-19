@@ -7,10 +7,10 @@
 {% block body %}
 
 <h1>GET GAMES</h1>
-	{% if team_name %}
+	{% if games %}
 	<ul>
     	{% for game in games %}
-    		<li> {{ game.home_team }} </li>
+    		<li> {{ game }} </li>
     	{% endfor %}
     </ul>
     {% endif %}
