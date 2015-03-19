@@ -1,0 +1,23 @@
+{% extends 'blazerbar/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %} INDEX {% endblock %}
+
+{% block body %}
+
+<h1>GET GAMES</h1>
+	{% if team_name %}
+	<ul>
+    	{% for game in games %}
+    		<li> {{ game.home_team }} </li>
+    	{% endfor %}
+    </ul>
+    {% endif %}
+
+
+
+    </body>
+</html>
+
+{% endblock %}
