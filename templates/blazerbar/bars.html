@@ -1,0 +1,23 @@
+{% extends 'blazerbar/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %} INDEX {% endblock %}
+
+{% block body %}
+
+<h1>GET BARS</h1>
+	{% if bars %}
+	<ul>
+    	{% for bar in bars %}
+    		<li> <a href="{% url 'bar_page' bar.bar_slug %}">{{ bar }}</a> </li>
+    	{% endfor %}
+    </ul>
+    {% endif %}
+
+
+
+{% endblock %}
+
+
+<li><a href="{% url 'get_games' team.team_id %}">{{ team.full_name }}</a></li>

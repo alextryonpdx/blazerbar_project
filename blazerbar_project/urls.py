@@ -13,7 +13,9 @@ urlpatterns = patterns('',
     url(r'^/about/', views.about, name="about"),
     url(r'^blazerbar/bars/', views.get_bars, name='get_bars'),
     url(r'^blazerbar/teams', views.teams, name='teams'),
-    url(r'^blazerbar/(?P<team_id>[\w\-]+)/$', views.get_games, name='get_games')
+    url(r'^blazerbar/bar/(?P<bar_slug>[\w\-]+)/$', views.bar_page, name='bar_page'),
+    url(r'^blazerbar/(?P<team_id>[\w\-]+)/$', views.get_games, name='get_games'),
+
    # url(r'^blazerbar/friends/', views.get_friends, name='get_friends')
     )
 

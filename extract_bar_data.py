@@ -8,10 +8,11 @@ django.setup()
 
 from blazerbar.models import Bar
 
-def add_bar(name, location, image_url, tvsize, sound, happyhour):
+def add_bar(name, location, website, image_url, tvsize, sound, happyhour):
 	print name
 	b =  Bar.objects.get_or_create(name=name)[0]
 	b.location = location
+	b.website = website
 	b.image_url = image_url
 	#b.neighborhood = neighborhood
 	b.bar_slug = slugify(name)
@@ -26,8 +27,10 @@ for i in range(13):
 	getback = json.load(f)
 	for biz in getback:
 		name = biz['name']
+		website = biz['url']
 		location = biz['location']['address'][0]
 		image_url = biz['image_url']
-		add_bar(name, location, image_url, "","","")
+		image_url = biz['image_url']
+		add_bar(name, location, website, image_url, "","","")
 
 
