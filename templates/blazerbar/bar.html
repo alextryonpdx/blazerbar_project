@@ -5,16 +5,24 @@
 {% block title %} BlazerBar - {{ Bar.name }} {% endblock %}
 
 {% block body %}
-
+<p> {{ User.username }} </p>
 {% if bar %}
 <a href={{ bar.website }}><h2>{{ bar.name }}</h2></a>
 <img src="{{ bar.image_url }}"></img>
 <h5>{{ bar.location }}</h5>
 {% endif %}
+
 {% if events %}
 <h5>EVENTS</h5>
 {% for event in events %}
 <p>{{ event }}</p>
 {% endfor %}
+{% endif %}
+
+{% if ratings %}
+	<h5>RATINGS</h5>
+	{% for rating in ratings %}
+		<p>{{ rating }}</p>
+	{% endfor %}
 {% endif %}
 {% endblock %}

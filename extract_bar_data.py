@@ -22,7 +22,7 @@ def add_bar(name, location, website, image_url, tvsize, sound, happyhour):
 	b.save()
 	return b
 
-for i in range(13):
+for i in range(30):
 	f = open('blazerbar/yelp-data/results'+ str(i+1) +'.txt', 'r')
 	getback = json.load(f)
 	for biz in getback:

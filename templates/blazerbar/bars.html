@@ -5,7 +5,9 @@
 {% block title %} INDEX {% endblock %}
 
 {% block body %}
-
+{% if user.is_authenticated %}
+	<h3>Hello {{ user.username }}</h3>
+{% endif %}
 <h1>GET BARS</h1>
 	{% if bars %}
 	<ul>
