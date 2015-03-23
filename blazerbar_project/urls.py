@@ -17,7 +17,8 @@ urlpatterns = patterns('',
     url(r'^blazerbar/team/(?P<team_id>[\w\-]+)/$', views.get_games, name='get_games'),
     url(r'^blazerbar/register/', views.register, name='register'),
     url(r'^login/$', views.user_login, name='login'),
-    url(r'^logout/$', views.user_logout, name='logout')
+    url(r'^logout/$', views.user_logout, name='logout'),
+    url(r'^blazerbar/userprofile/(?P<username>[\w\-]+)/$', views.user_profile, name='userpage')
 
    # url(r'^blazerbar/friends/', views.get_friends, name='get_friends')
     )
