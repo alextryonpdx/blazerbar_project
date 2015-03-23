@@ -23,12 +23,12 @@
     		<div class="logo"></div>
     		<div class="nav-links">
     		 <ul id="guest-links">
-          <li><a href="/accounts/register/">REGISTER</a></li>
-          <li><a href="/accounts/login/">LOGIN</a></li>
+          <li><a href="{% url 'register' %}">REGISTER</a></li>
+          <li><a href="{% url 'login' %}">LOGIN</a></li>
          </ul>
          <ul id="user-nav">
           {% if user.is_authenticated %}
-            <li><a href="/accounts/logout/?next=/blazerbar/bars">LOGOUT</a></li>
+            <li><a href="{% url 'logout' %}">LOGOUT</a></li>
           {% endif %}
          </ul>
     		</div>
