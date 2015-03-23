@@ -29,6 +29,9 @@ urlpatterns = patterns('',
     url(r'^blazerbar/register/', views.register, name='register'),
     url(r'^login/$', views.user_login, name='login'),
     url(r'^logout/$', views.user_logout, name='logout')
+<<<<<<< HEAD
+>>>>>>> parent of 0b10f9b... monday morning
+=======
 >>>>>>> parent of 0b10f9b... monday morning
 
    # url(r'^blazerbar/friends/', views.get_friends, name='get_friends')
