@@ -25,7 +25,10 @@
 			<li>{{ event.event }}</li>
 		{% endfor %}
 	</ul>
-
+	<h5>Favorite Bars</h5>
+		{% for bar in profile.favorite_bars.all %}
+			<li> <a href="{% url 'bar_page' bar.bar_slug %}">{{ bar }} </li>
+		{% endfor %}
 
 	<h5>Events - Attending</h5>
 	<ul>
