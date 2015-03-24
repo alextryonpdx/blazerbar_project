@@ -1,0 +1,25 @@
+{% extends 'blazerbar/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %} BlazerBar - {{ Bar.name }} {% endblock %}
+
+{% block body %}
+
+{% if user.is_authenticated %}
+	<h3>Hello {{ user.username }}</h3>
+{% endif %}
+
+{% if bar %}
+	<h5>{{ bar.name }}</h5>
+{% endif %}
+
+{% for game in games %}
+	<a href="{% url 'event_from_bar' bar.bar_slug user.username game.game_id %}">{{ game }}</a>
+	<br />
+{% endfor %}
+
+
+
+
+{% endblock %}

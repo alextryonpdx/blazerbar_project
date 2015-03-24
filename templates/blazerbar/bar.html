@@ -5,10 +5,12 @@
 {% block title %} BlazerBar - {{ Bar.name }} {% endblock %}
 
 {% block body %}
-<p> {{ User.username }} </p>
+{% if user.is_authenticated %}
+	<h3>Hello {{ user.username }}</h3>
+	<a href="{% url 'watch_here' bar.bar_slug user.username %}">Watch a Game Here!</a>
+{% endif %}
 {% if bar %}
 <a href={{ bar.website }}><h2>{{ bar.name }}</h2></a>
-<img src="{{ bar.image_url }}"></img>
 <h5>{{ bar.location }}</h5>
 {% endif %}
 
@@ -25,4 +27,7 @@
 		<p>{{ rating }}</p>
 	{% endfor %}
 {% endif %}
+
+
+
 {% endblock %}
