@@ -1,0 +1,17 @@
+
+{% extends 'blazerbar/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %} BlazerBar - {{ Bar.name }} {% endblock %}
+
+{% block body %}
+
+<form id="review_form" method="post" action="{% url 'review_bar' bar_slug username %}"
+                enctype="multipart/form-data">
+               {% csrf_token %}
+            {{ review_form.as_p }}
+            <input type="submit" name="submit" value="Save Review" />
+        </form>
+
+{% endblock %}

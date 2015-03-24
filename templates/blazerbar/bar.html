@@ -7,7 +7,9 @@
 {% block body %}
 {% if user.is_authenticated %}
 	<h3>Hello {{ user.username }}</h3>
-	<a href="{% url 'watch_here' bar.bar_slug user.username %}">Watch a Game Here!</a>
+	<a href="{% url 'watch_here' bar.bar_slug user.username %}">Watch a Game Here!</a><br />
+	<a href="{% url 'review_bar' bar.bar_slug user.username %}">Review This Bar!</a><br />
+	<a href="{% url 'favorite' bar.bar_slug user.username %}">Favorite This Bar!</a>
 {% endif %}
 {% if bar %}
 <a href={{ bar.website }}><h2>{{ bar.name }}</h2></a>
@@ -20,6 +22,13 @@
 <p>{{ event }}</p>
 {% endfor %}
 {% endif %}
+
+{% if favoriters %}
+	<h5>{{ faves }} fans like this bar</h5>
+	{% for fave in favoriters %}
+		<a href="{% url 'userpage' fave.user.username %}">{{ fave.user.username }}</a>
+	{% endfor %}
+{% endif %}	
 
 {% if ratings %}
 	<h5>RATINGS</h5>
