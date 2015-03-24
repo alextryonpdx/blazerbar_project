@@ -6,6 +6,10 @@
 
 {% block body %}
 	<h3>{{ user.username }}</h3>
+{%if user.is_authenticated %}
+	{{ self }}
+{% endif %}
+
 	<h5>Teams</h5>
 	<ul>
 		{% for team in profile.teams.all %}
@@ -16,18 +20,20 @@
 	<h5>Friends</h5>
 	<ul>
 		{% for friend in profile.friends.all %}
-			<li><a href="{% url 'userpage' friend.username %}">{{ friend.username }}</a></li>
+			<lh><a href="{% url 'userpage' friend.username %}">{{ friend.username }}</a></lh>
 		{% endfor %}
 	</ul>
 	<h5>Events - Hosting</h5>
 	<ul>
 		{% for event in hosting_events.all %}
-			<li>{{ event.event }}</li>
+			<li>{{ event.event }}<br />
+				     at {{ event.venue }}
+			</li>
 		{% endfor %}
 	</ul>
 	<h5>Favorite Bars</h5>
 		{% for bar in profile.favorite_bars.all %}
-			<li> <a href="{% url 'bar_page' bar.bar_slug %}">{{ bar }} </li>
+			<li> <a href="{% url 'bar_page' bar.bar_slug %}">{{ bar }} </a></li>
 		{% endfor %}
 
 	<h5>Events - Attending</h5>
