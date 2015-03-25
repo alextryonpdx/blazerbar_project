@@ -7,8 +7,7 @@
 {% block body %}
 	<h3>{{ user.username }}</h3>
 {%if user.is_authenticated %}
-	username
-	{{ mainuser }}
+	<a href="{% url 'userpage' mainuser %}">Go Home, {{ mainuser }}</a>
 {% endif %}
 
 	<h5>Teams</h5>
@@ -21,7 +20,9 @@
 	<h5>Friends</h5>
 	<ul>
 		{% for friend in profile.friends.all %}
-			<lh><a href="{% url 'userpage' friend.username %}">{{ friend.username }}</a></lh>
+		{% if friend.username != mainuser %}
+			<lh><a href="{% url 'userpage' friend.username %}">{{ friend.username|capfirst }}</a></lh>
+		{% endif %}
 		{% endfor %}
 	</ul>
 	<h5>Events - Hosting</h5>
@@ -29,6 +30,7 @@
 		{% for event in hosting_events.all %}
 			<li>{{ event.event }}<br />
 				     at {{ event.venue }}
+				     in {{ event.event.game_date|timeuntil }}
 			</li>
 		{% endfor %}
 	</ul>
@@ -49,12 +51,12 @@
 			<li>{{ team.full_name }}</li>
 		{% endfor %}
 	</ul>
-	<h5>Games</h5>
+{	<h5>Games</h5>
 	<ul>
 		{% for game in games.all %}
 			<li>{{ game }}</li>
 		{% endfor %}
-	</ul>
+	</ul>}
 
 
 
