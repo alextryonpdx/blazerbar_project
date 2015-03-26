@@ -9,7 +9,11 @@
 {%if user.is_authenticated %}
 	<a href="{% url 'userpage' mainuser %}">Go Home, {{ mainuser }}</a>
 {% endif %}
-
+{% if profile.picture %}
+<img src="/media/{{ profile.picture }}" width=50px></img>
+{% else %}
+<img src="/media/profile_images/blazerbarsquare.jpg" width=50px></img>
+{% endif %}
 	<h5>Teams</h5>
 	<ul>
 		{% for team in profile.teams.all %}
@@ -51,12 +55,12 @@
 			<li>{{ team.full_name }}</li>
 		{% endfor %}
 	</ul>
-{	<h5>Games</h5>
+	<h5>Games</h5>
 	<ul>
 		{% for game in games.all %}
-			<li>{{ game }}</li>
+			<li><a href="{% url 'game' game.game_id %}">{{ game }}</a></li>
 		{% endfor %}
-	</ul>}
+	</ul>
 
 
 
