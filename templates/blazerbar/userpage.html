@@ -46,7 +46,7 @@
 	<h5>Events - Attending</h5>
 	<ul>
 		{% for event in attending_events.all %}
-			<li>{{ event.event }}</li>
+			<li>{{ event.event.event.game_date }}</li>
 		{% endfor %}
 	</ul>
 	<h5>Teams</h5>

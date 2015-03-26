@@ -20,13 +20,38 @@ if events:
 
 {% extends 'blazerbar/base.html' %}
 {% block body %}
+<a href="{% url 'userpage' user.username %}">{{ user.username }}</a>
 
+<h3>{{ game.home_team }} vs {{ game.away_team }} </h3>
+<h4>{{ game.game_date }}</h4>
+<hr />
 
+{% for each in events %}
 
-<p> {{ user.username }} and {{ game }} and {{ event.owner.username }}</p>
+	<p><a href="{% url 'userpage' each.owner.username %}">{{ each.owner.username }}</a>
+		{{ events.each.attendee_list }}
+		{% if each.attendee_list %} 
+			and {{ each.attendee_list }} friends are watching
+		{% else %} 
+		
+			is watching 
+		{% endif %} 
+
+		at</p>
+	
+	<p>{{ each.venue.name }}</p>
+	<a href="{% url 'join-event' each.eventID game.game_id %}">Join Event</a>
+	<hr />
+{% endfor %}
+
+<br />
+<hr />
+<p> do no need to display game info for each event. display that at the top </p>
+
+<p>the following code should only appear :onhover over the #of attendees. it will need to be adjusted for nested nature of multiple events</p>
 <ul>
-{% for user in attendees.all %}
-<li>{{ user.user.username }}</li>
+{% for user in attendee_list.all %}
+<li><a href="{% url 'userpage' user.user.username %}">{{ user.user.username }}</a></li>
 {% endfor %}
 </ul>
 
