@@ -27,7 +27,7 @@
 	<h5>Teams</h5>
 	<ul>
 		{% for team in profile.teams.all %}
-			<li>{{ team.full_name }}</li>
+			<li><a href="{% url 'team_page' team.team_id %}">{{ team.full_name }}</a></li>
 		{% endfor %}
 	</ul>
 
@@ -59,12 +59,7 @@
 			<li><a href="{% url 'event' event.event.eventID %}">{{ event.event.event.game_date }}</a></li>
 		{% endfor %}
 	</ul>
-	<h5>Teams</h5>
-	<ul>
-		{% for team in teams.all %}
-			<li>{{ team.full_name }}</li>
-		{% endfor %}
-	</ul>
+	
 	<h5>Games</h5>
 	<ul>
 		{% for game in games.all %}
