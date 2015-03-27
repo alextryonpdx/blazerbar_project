@@ -2,9 +2,18 @@
 {% block body %}
 <a href="{% url 'userpage' user.username %}">{{ user.username }}</a>
 <hr />
+{{user}}
 <h3>{{ event.venue.name }}</h3>
 <h4>{{ event.venue.location }}</h4>
-<br />
+
+
+{% if user.is_authenticated %}
+	{% if attendee_check %}
+		<p>You are attending this event<p>
+	{% else %}
+		<a href="{% url 'join_event' event.eventID %}">Join</a>
+	{% endif %}
+{% endif %}
 <h4> Attendees </h4>
 <ul>
 	<li><strong><a href="{% url 'userpage' event.owner.username %}">{{ event.owner.username }}</a></strong></li>
