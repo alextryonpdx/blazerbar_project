@@ -25,29 +25,31 @@ if events:
 <h3>{{ game.home_team }} vs {{ game.away_team }} </h3>
 <h4>{{ game.game_date }}</h4>
 <hr />
-
-{% for each in events %}
-
-	<p><a href="{% url 'userpage' each.owner.username %}">{{ each.owner.username }}</a>
-		{{ events.each.attendee_list }}
-		{% if each.attendee_list %} 
-			and {{ each.attendee_list }} friends are watching
-		{% else %} 
-		
-			is watching 
-		{% endif %} 
-
-		at</p>
+{% for event in events%}
 	
-	<p>{{ each.venue.name }}</p>
-	<a href="{% url 'join-event' each.eventID game.game_id %}">Join Event</a>
+	<p>{{ event.owner }} 
+	{% if event.attendee_set.all|length == 2 %}
+			and {{ event.attendee_set.all|length|add:-1 }} friend are watching at
+	{% elif event.attendee_set.all|length > 2 %}
+			and {{ event.attendee_set.all|length|add:-1 }} friends are watching at
+	{% else %}
+			is watching at
+	{% endif %}
+	</p>
+	<a href="{% url 'bar_page' event.venue.bar_slug%}"><strong>{{ event.venue }}</strong></a>
+
 	<hr />
+		
+
 {% endfor %}
 
 <br />
 <hr />
 <p> do no need to display game info for each event. display that at the top </p>
-
+<!--logic for showing user list. need to take sub-set excluding first attendee(event owner)
+		{% for a in event.attendee_set.all %}
+				<p>{{ a.user }}</p>
+		{% endfor %} -->
 <p>the following code should only appear :onhover over the #of attendees. it will need to be adjusted for nested nature of multiple events</p>
 <ul>
 {% for user in attendee_list.all %}
