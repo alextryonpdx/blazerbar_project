@@ -27,7 +27,7 @@ if events:
 <hr />
 {% for event in events%}
 	
-	<p>{{ event.owner }} 
+	<a href="{% url 'event' event.eventID %}">{{ event.owner }} 
 	{% if event.attendee_set.all|length == 2 %}
 			and {{ event.attendee_set.all|length|add:-1 }} friend are watching at
 	{% elif event.attendee_set.all|length > 2 %}
@@ -36,7 +36,7 @@ if events:
 			is watching at
 	{% endif %}
 	</p>
-	<a href="{% url 'bar_page' event.venue.bar_slug%}"><strong>{{ event.venue }}</strong></a>
+	<strong>{{ event.venue }}</strong></a>
 
 	<hr />
 		

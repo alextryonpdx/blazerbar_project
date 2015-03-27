@@ -18,9 +18,13 @@
 {{events}}
 {% if events %}
 <h5>EVENTS</h5>
+<ul>
 {% for event in events %}
-<p>{{ event }}</p>
+	<li><a href="{% url 'event' event.eventID %}">{{ event.event.game_date }}<br />
+	{{ event.event.home_team }} vs. {{ event.event.away_team }}
+	</li>
 {% endfor %}
+</ul>
 {% endif %}
 
 {% if favoriters %}
@@ -40,3 +44,6 @@
 
 
 {% endblock %}
+
+<!-- update average rating when rating is made.
+	make sure to go by length of list. create new DB column in model for list?->

@@ -46,7 +46,7 @@
 	<h5>Events - Attending</h5>
 	<ul>
 		{% for event in attending_events.all %}
-			<li>{{ event.event.event.game_date }}</li>
+			<li><a href="{% url 'event' event.event.eventID %}">{{ event.event.event.game_date }}</a></li>
 		{% endfor %}
 	</ul>
 	<h5>Teams</h5>
@@ -58,7 +58,9 @@
 	<h5>Games</h5>
 	<ul>
 		{% for game in games.all %}
-			<li><a href="{% url 'game' game.game_id %}">{{ game }}</a></li>
+			<li><a href="{% url 'game' game.game_id %}">{{ game.game_date }}<br />
+				{{game.home_team }} vs. {{game.away_team }} 
+				</a></li>
 		{% endfor %}
 	</ul>
 
