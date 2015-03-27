@@ -9,7 +9,7 @@
 
 {% if user.is_authenticated %}
 	{% if attendee_check %}
-		<p>You are attending this event<p>
+		<a href="{% url 'leave_event' event.eventID %}">Leave</a>
 	{% else %}
 		<a href="{% url 'join_event' event.eventID %}">Join</a>
 	{% endif %}
