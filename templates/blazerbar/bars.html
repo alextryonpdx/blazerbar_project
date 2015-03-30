@@ -1,25 +1,15 @@
-{% extends 'blazerbar/base.html' %}
 
-{% load staticfiles %}
-
-{% block title %} INDEX {% endblock %}
-
-{% block body %}
-{% if user.is_authenticated %}
-	<h3>Hello {{ user.username }}</h3>
-{% endif %}
-<h1>GET BARS</h1>
-	{% if bars %}
+	{% if fav_bars %}
 	<ul>
-    	{% for bar in bars %}
+    	{% for bar in fav_bars %}
     		<li> <a href="{% url 'bar_page' bar.bar_slug %}">{{ bar }}</a> </li>
     	{% endfor %}
     </ul>
     {% endif %}
-
-
-
-{% endblock %}
-
-
-<li><a href="{% url 'get_games' team.team_id %}">{{ team.full_name }}</a></li>
+    {% if db_bars %}
+	<ul>
+    	{% for bar in db_bars %}
+    		<li> <a href="{% url 'bar_page' bar.bar_slug %}">{{ bar }}</a> </li>
+    	{% endfor %}
+    </ul>
+    {% endif %}

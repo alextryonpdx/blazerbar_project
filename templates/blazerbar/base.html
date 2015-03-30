@@ -25,6 +25,8 @@
     		</div>
       </div>
     <div id="frame">
+{% load blazerbar_extras %}
+
 
       
 <!-- 
@@ -35,7 +37,7 @@ transparent (5% opacity?) footer with copyright and contact link and year. in bo
 
   	{% block body %} {% endblock %}
 
-    
+
 
 
 
@@ -43,6 +45,13 @@ transparent (5% opacity?) footer with copyright and contact link and year. in bo
 
 
   </div>
-    
+
+  <div>
+  {% block side_block %}
+<!-- Create form to feed search term to 'get_bars' function -->
+  {% get_bars user bar_search %}
+
+  {% endblock %}
+</div>
   </body>
 </html>
