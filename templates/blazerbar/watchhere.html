@@ -12,12 +12,22 @@
 
 {% if bar %}
 	<h5>{{ bar.name }}</h5>
-{% endif %}
+
 
 {% for game in games %}
 	<a href="{% url 'event_from_bar' bar.bar_slug user.username game.game_id %}">{{ game }}</a>
 	<br />
 {% endfor %}
+{% endif %}
+
+{% if game %}
+	<h5>{{ game.home_team }} vs. {{ game.away_team }}</h5>
+	<h5>{{ game.game_date }}</h5>
+	{% for bar in bars %}
+		<a href="{% url 'event_from_bar' bar.bar_slug user.username game.game_id %}">{{ bar }}</a>
+		<br />
+	{% endfor %}
+{% endif %}
 
 
 

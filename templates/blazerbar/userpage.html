@@ -24,6 +24,16 @@
 {% else %}
 <img src="/media/profile_images/blazerbarsquare.jpg" width=50px></img>
 {% endif %}
+
+{% if invitations %}
+	<ul>
+	{% for invite in invitations %}
+		<li><a href="{% url 'userpage' invite.host %}">{{ invite.host }}</a> invited you to <br />
+			<a href="{% url 'event' invite.event.eventID %}">{{ invite.event }}</a><br />
+			<a href="{% url 'accept_invite' invite.event.eventID %}">Join</a> or <a href="{% url 'deny_invite' invite.event.eventID %}">Deny</a></li>
+	{% endfor %}
+	</ul>
+{% endif %}
 	<h5>Teams</h5>
 	<ul>
 		{% for team in profile.teams.all %}

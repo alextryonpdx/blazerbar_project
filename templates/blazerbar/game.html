@@ -25,6 +25,7 @@ if events:
 <h3>{{ game.home_team }} vs {{ game.away_team }} </h3>
 <h4>{{ game.game_date }}</h4>
 <hr />
+<h5><a href="{% url 'watch_this' game.game_id user.username %}">Watch This Game</a></h5>
 {% for event in events%}
 	
 	<a href="{% url 'event' event.eventID %}">{{ event.owner }} 
