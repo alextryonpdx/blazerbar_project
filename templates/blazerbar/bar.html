@@ -15,6 +15,18 @@
 <a href={{ bar.website }}><h2>{{ bar.name }}</h2></a>
 <h5>{{ bar.location }}</h5>
 {% endif %}
+{% if favoriters %}
+	<h5>{{ faves }} fans like this bar</h5>
+	{% for fave in favoriters %}
+		<a href="{% url 'userpage' fave.user.username %}">{{ fave.user.username }}</a>
+	{% endfor %}
+{% endif %}	
+{% if bar.average_rating %}
+	<p>Average Rating: {{ bar.average_rating }}</p>
+	<p>{{ bar.ratings }} total reviews</p>  <!-- make this a link to reviews display -->
+{% else %}
+	<a href="{% url 'review_bar' bar.bar_slug user.username %}">Be the first to Review this bar</a>
+{% endif %}
 
 {% if events %}
 	<h5>EVENTS</h5>
@@ -22,22 +34,19 @@
 	{% for event in events %}
 		<li><a href="{% url 'event' event.eventID %}">{{ event.event.game_date }}<br />
 		{{ event.event.home_team }} vs. {{ event.event.away_team }}
-		</li>
+		</a></li>
 	{% endfor %}
 	</ul>
 {% endif %}
 
-{% if favoriters %}
-	<h5>{{ faves }} fans like this bar</h5>
-	{% for fave in favoriters %}
-		<a href="{% url 'userpage' fave.user.username %}">{{ fave.user.username }}</a>
-	{% endfor %}
-{% endif %}	
 
-{% if ratings %}
+
+{% if ratings_list %}
 	<h5>RATINGS</h5>
-	{% for rating in ratings %}
-		<p>{{ rating }}</p>
+	{% for each in ratings_list %}
+		<h3>{{ each }}, {{ each.created }}</h3>
+		<p>{{ each.rating }}</p>
+		<p>{{ each.review }}</p>
 	{% endfor %}
 {% endif %}
 

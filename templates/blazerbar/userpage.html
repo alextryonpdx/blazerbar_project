@@ -52,10 +52,10 @@
 	<h5>Events - Hosting</h5>
 	<ul>
 		{% for event in hosting_events.all %}
-			<li>{{ event.event }}<br />
+			<li><a href="{% url 'event' event.eventID %}">{{ event.event }}<br />
 				     at {{ event.venue }}
 				     in {{ event.event.game_date|timeuntil }}
-			</li>
+			</a></li>
 		{% endfor %}
 	</ul>
 	<h5>Favorite Bars</h5>

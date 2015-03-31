@@ -3,7 +3,13 @@
 <ul>
 {% for bar in bars %}
 	<li><a href="{% url 'bar_page' bar.bar_slug %}"><strong>{{ bar.name }}</strong><br />
-		{{ bar.location }}<a></li>
+		{{ bar.location }}</br>
+		{% if bar.average_rating %}
+			average rating: {{ bar.average_rating }}
+		{% else %}
+			this bar is not yet rated
+		{% endif %}
+	</a></li>
 {% endfor %}
 </ul>
 {% endblock %}
