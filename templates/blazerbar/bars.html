@@ -1,15 +1,9 @@
-
-	{% if fav_bars %}
-	<ul>
-    	{% for bar in fav_bars %}
-    		<li> <a href="{% url 'bar_page' bar.bar_slug %}">{{ bar }}</a> </li>
-    	{% endfor %}
-    </ul>
-    {% endif %}
-    {% if db_bars %}
-	<ul>
-    	{% for bar in db_bars %}
-    		<li> <a href="{% url 'bar_page' bar.bar_slug %}">{{ bar }}</a> </li>
-    	{% endfor %}
-    </ul>
-    {% endif %}
+{% extends 'blazerbar/base.html' %}
+{% block body %}
+<ul>
+{% for bar in bars %}
+	<li><a href="{% url 'bar_page' bar.bar_slug %}"><strong>{{ bar.name }}</strong><br />
+		{{ bar.location }}<a></li>
+{% endfor %}
+</ul>
+{% endblock %}

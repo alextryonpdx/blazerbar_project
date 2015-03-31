@@ -19,6 +19,7 @@
           <li style="display:inline-block"><a href="{% url 'login' %}">LOGIN</a></li>
           {% if user.is_authenticated %}
             <li style="display:inline-block"><a href="{% url 'logout' %}">LOGOUT</a></li>
+            <li style="display:inline-block"><a href="{% url 'userpage' user.username %}">HOME</a></li>
           {% endif %}
           
          </ul>
